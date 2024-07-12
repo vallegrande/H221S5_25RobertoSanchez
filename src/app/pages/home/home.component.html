@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header with Tailwind CSS</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <header class="bg-blue-500 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="text-white text-2xl font-bold">
+        <a href="#">App-Ip</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </header>
+
+
+  <div class="container">
+    <div class="section">
+      <button class="btn" (click)="showMyIp()">Mostrar mi IP</button>
+      <div *ngIf="myIp" class="result">
+        <p>My IP: {{ myIp }}</p>
+      </div>
+    </div>
+  
+    <div class="section">
+      <input #ipInput class="input" type="text" placeholder="Enter IP" />
+      <button class="btn" (click)="showIpDetails(ipInput.value)">Mostrar detalles de IP</button>
+      <div *ngIf="ipDetails" class="result">
+        <p>IP Details: {{ ipDetails }}</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      var menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
