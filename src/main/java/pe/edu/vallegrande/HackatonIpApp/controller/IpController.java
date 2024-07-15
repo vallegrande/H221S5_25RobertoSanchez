@@ -20,10 +20,13 @@ public class IpController {
         this.ipService = ipService;
     }
 
+    /* http://localhost:8080/api/my-ip */
     @GetMapping("/my-ip")
     public Mono<String> getMyIp() {
         return ipService.getMyIp();
     }
+
+    /* http://localhost:8080/api/ip-info/38.137.200.11 */
 
     @GetMapping("/ip-info/{ip}")
     public Mono<String> getIpInfo(@PathVariable String ip) {
